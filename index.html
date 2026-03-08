@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luis Uzcátegui | Especialista en Soporte Técnico</title>
+    <style>
+        /* Importamos fuentes modernas y tipo código para los acentos de terminal */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Fira+Code:wght@400;600&display=swap');
+
+        :root {
+            /* Paleta Blue & Gray Mode */
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-primary: #3b82f6;
+            /* Azul Primary */
+            --accent-secondary: #94a3b8;
+            /* Gris Azulado Secondary */
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(59, 130, 246, 0.2);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            /* Fondo sutil tipo aura tecnológica */
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(148, 163, 184, 0.05), transparent 25%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 3.5rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Hero Section estilo Terminal */
+        .hero {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .terminal-badge {
+            font-family: 'Fira Code', monospace;
+            color: var(--accent-primary);
+            background: rgba(59, 130, 246, 0.1);
+            padding: 0.35rem 1rem;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 0 auto;
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+        }
+
+        .terminal-badge::before {
+            content: "@ELTECNICOLUIS    ";
+            color: var(--accent-secondary);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .extract {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .extract strong {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Botones Grid - Estilo Tech Minimalista */
+        .links-grid {
+            display: grid;
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: var(--card-bg);
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 1.1rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            /* Flexbox interno para alinear bien texto e icono */
+        }
+
+        .link-btn .btn-text {
+            flex-grow: 1;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .link-btn .btn-handle {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background: var(--accent-primary);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            transform-origin: bottom;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: var(--border-color);
+            background: rgba(30, 41, 59, 0.9);
+            box-shadow: 0 10px 25px -10px rgba(59, 130, 246, 0.25);
+        }
+
+        .link-btn:hover::before {
+            transform: scaleY(1);
+        }
+
+        .link-btn:hover .icon {
+            filter: drop-shadow(0 0 6px var(--accent-primary));
+            color: var(--accent-primary);
+        }
+
+        .icon {
+            width: 26px;
+            height: 26px;
+            fill: currentColor;
+            transition: all 0.3s ease;
+        }
+
+        /* Sección de Expertise */
+        .expertise {
+            margin-top: 1rem;
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        .section-title {
+            font-family: 'Fira Code', monospace;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex-grow: 0;
+            width: 40px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-secondary));
+        }
+
+        .section-title::after {
+            background: linear-gradient(270deg, transparent, var(--accent-secondary));
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .expertise-card {
+            background: transparent;
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            padding: 1.2rem 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: all 0.4s ease;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expertise-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            bottom: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(148, 163, 184, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .expertise-card:hover {
+            color: var(--accent-secondary);
+            border-color: var(--accent-secondary);
+            /* Refuerzo del efecto antigravitatorio en hover */
+            transform: translateY(-8px);
+            box-shadow: 0 15px 25px -10px rgba(148, 163, 184, 0.2);
+        }
+
+        .expertise-card:hover::after {
+            opacity: 1;
+        }
+
+        /* WIDGETS & AVATAR */
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            margin: 0 auto 0.5rem auto;
+            object-fit: cover;
+            position: relative;
+            z-index: 20;
+        }
+
+        .widgets-section {
+            width: 100%;
+            animation: fadeIn 2.5s ease-out forwards;
+        }
+
+        .widgets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .widget-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem;
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 450px;
+            transition: transform 0.3s ease;
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -10px rgba(59, 130, 246, 0.25);
+            border-color: var(--accent-primary);
+        }
+
+        /* Keyframes y Clases para Animación Antigravity */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .antigravity-el {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Desfases para que no floten todos sincronizados */
+        .antigravity-el:nth-child(even) {
+            animation-duration: 7.5s;
+        }
+
+        .antigravity-el:nth-child(3n) {
+            animation-duration: 5.5s;
+            animation-delay: 1s;
+        }
+
+        .antigravity-el:nth-child(5n) {
+            animation-duration: 8s;
+            animation-delay: 2s;
+        }
+
+        /* Contenedor dinámico de partículas JS */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            opacity: 0.2;
+            filter: blur(1px);
+        }
+
+        @keyframes floatUpParticle {
+            from {
+                transform: translateY(110vh) scale(1);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.1;
+            }
+
+            to {
+                transform: translateY(-10vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Partículas flotantes generadas por JS -->
+    <div id="particles"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <img src="avatar.jpg" alt="Luis Uzcátegui Avatar" class="avatar antigravity-el" />
+            <div><span class="terminal-badge">luis Uzcategui</div>
+            <h1>Luis Uzcátegui</h1>
+            <div class="subtitle">Especialista en Soporte Técnico</div>
+            <p class="extract">
+                "<strong>30 años de experiencia</strong> resolviendo problemas complejos en entornos Windows, Linux
+                (Debian, Ubuntu), CCTV y redes."
+            </p>
+        </header>
+
+        <!-- Redes Sociales y Contacto -->
+        <main class="links-grid">
+            <a href="https://wa.me/584242964339" class="link-btn antigravity-el" target="_blank"
+                rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <div class="btn-text">
+                    <span>WhatsApp</span>
+                    <span class="btn-handle">wa.me/584242964339</span>
+                </div>
+            </a>
+
+            <a href="https://t.me/584242964339" class="link-btn antigravity-el" target="_blank"
+                rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12 24c6.627 0 12-5.373 12-12S18.627 0 12 0 0 5.373 0 12s5.373 12 12 12z" fill="none" />
+                    <path
+                        d="M16.892 7.558l-1.996 9.404c-.149.664-.543.827-1.096.516l-3.03-2.233-1.463 1.408c-.161.161-.298.297-.611.297l.218-3.084 5.613-5.07c.244-.217-.054-.338-.38-.11l-6.94 4.368-2.986-.933c-.65-.203-.663-.65.136-.963l11.666-4.498c.54-.199 1.012.122.869.898z" />
+                </svg>
+                <div class="btn-text">
+                    <span>Telegram</span>
+                    <span class="btn-handle">04242964339</span>
+                </div>
+            </a>
+
+            <a href="https://tiktok.com/@eltecnicoluis" class="link-btn antigravity-el" target="_blank"
+                rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.95-.5 3.96-1.84 5.34-1.27 1.34-3.1 2.06-4.98 2.05-1.92-.01-3.83-.8-5.11-2.23-1.24-1.39-1.82-3.32-1.7-5.21.12-2 1.05-3.85 2.58-5.05 1.47-1.16 3.42-1.6 5.32-1.38v4.06c-1.21-.19-2.52.09-3.47.88-.93.75-1.4 1.94-1.37 3.14.03 1.25.61 2.45 1.59 3.19.96.73 2.22 1 3.4 0.81 1.25-.2 2.28-1 2.89-2.1.58-1 .85-2.17.84-3.34V.02h-.03z" />
+                </svg>
+                <div class="btn-text">
+                    <span>TikTok</span>
+                    <span class="btn-handle">@eltecnicoluis</span>
+                </div>
+            </a>
+
+            <a href="https://x.com/eltecnicoluis" class="link-btn antigravity-el" target="_blank"
+                rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path
+                        d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
+                </svg>
+                <div class="btn-text">
+                    <span>Twitter (X)</span>
+                    <span class="btn-handle">@eltecnicoluis</span>
+                </div>
+            </a>
+
+            <a href="https://instagram.com/eltecnicoluis" class="link-btn antigravity-el" target="_blank"
+                rel="noopener noreferrer">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+                <div class="btn-text">
+                    <span>Instagram</span>
+                    <span class="btn-handle">@eltecnicoluis</span>
+                </div>
+            </a>
+        </main>
+
+        <!-- Sección de Expertise -->
+        <section class="expertise">
+            <div class="section-title">Dominio Técnico</div>
+            <div class="expertise-grid">
+                <div class="expertise-card antigravity-el">Soporte a<br>Servidores</div>
+                <div class="expertise-card antigravity-el">CCTV &<br>Biométricos</div>
+                <div class="expertise-card antigravity-el">Software<br>Libre</div>
+                <div class="expertise-card antigravity-el">Redes y<br>Conectividad</div>
+            </div>
+        </section>
+
+        <!-- Social Widgets Section -->
+        <section class="widgets-section">
+            <div class="section-title">Social Feeds</div>
+            <div class="widgets-grid">
+                <div class="widget-card antigravity-el">
+                    <!-- Twitter -->
+                    <a class="twitter-timeline" data-height="500" data-theme="dark"
+                        href="https://twitter.com/eltecnicoluis?ref_src=twsrc%5Etfw">Tweets by eltecnicoluis</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="widget-card antigravity-el">
+                    <!-- Instagram -->
+                    <blockquote class="instagram-media"
+                        data-instgrm-permalink="https://www.instagram.com/eltecnicoluis/" data-instgrm-version="14"
+                        style=" background:#000; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    </blockquote>
+                    <script async src="//www.instagram.com/embed.js"></script>
+                </div>
+                <div class="widget-card antigravity-el">
+                    <!-- TikTok -->
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@eltecnicoluis"
+                        data-unique-id="eltecnicoluis" data-embed-type="creator"
+                        style="max-width: 780px; min-width: 288px;">
+                        <section> <a target="_blank"
+                                href="https://www.tiktok.com/@eltecnicoluis?refer=creator_embed">@eltecnicoluis</a>
+                        </section>
+                    </blockquote>
+                    <script async src="https://www.tiktok.com/embed.js"></script>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Script de Interactividad y Antigravedad Sutil -->
+    <script>
+        // 1. Generar partículas flotantes estilo "polvo estelar / datos"
+        const particlesContainer = document.getElementById('particles');
+        const numParticles = 25;
+
+        for (let i = 0; i < numParticles; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+
+            // Random properties para efecto orgánico aleatorio
+            const size = Math.random() * 3 + 1;
+            const posX = Math.random() * 100;
+            const duration = Math.random() * 15 + 10;
+            const delay = Math.random() * 10;
+
+            // Alternar colores de las partículas 
+            if (i % 3 === 0) particle.style.background = 'var(--accent-secondary)';
+
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${posX}vw`;
+            particle.style.animation = `floatUpParticle ${duration}s linear ${delay}s infinite`;
+
+            particlesContainer.appendChild(particle);
+        }
+
+        // 2. Efecto de "Antigravedad Dinámica" en reacción al mouse
+        document.addEventListener('mousemove', (e) => {
+            const elements = document.querySelectorAll('.antigravity-el, .hero');
+
+            // Calcular posición relativa del mouse desde el centro de la pantalla
+            const mouseX = (e.clientX / window.innerWidth) - 0.5;
+            const mouseY = (e.clientY / window.innerHeight) - 0.5;
+
+            elements.forEach((el, index) => {
+                // Multiplicadores sutiles para empujar los elementos ligeramente
+                const depth = (index % 3) + 1; // Profundidad falsa
+                const offsetX = mouseX * (depth * -8);
+                const offsetY = mouseY * (depth * -12);
+
+                // Mantenemos la animación CSS base usando variables si es necesario
+                // y aplicamos una transformación adicional sutil.
+                el.style.transform = `translate(calc(${offsetX}px), calc(${offsetY}px))`;
+            });
+        });
+
+        // Restaurar suavemente al salir
+        document.addEventListener('mouseleave', () => {
+            const elements = document.querySelectorAll('.antigravity-el, .hero');
+            elements.forEach(el => {
+                el.style.transform = '';
+                el.style.transition = 'transform 0.5s ease';
+
+                // Remover la transición al finalizar para devolver el control al keyframe
+                setTimeout(() => el.style.transition = '', 500);
+            });
+        });
+    </script>
+</body>
+
+</html>
